@@ -1,0 +1,8 @@
+# Ignore local temp files
+.DS_Store
+Thumbs.db
+*.log
+.gemini/
+.agents/
+node_modules/
+dist/

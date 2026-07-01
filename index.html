@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="gold-black">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="ADAM CORPORATION — Premium Gaming Panels & Guild Services. Buy Mobile Panels, PC Panels, join our elite Guild, and access exclusive free panels." />
+  <meta name="keywords" content="ADAM CORP, gaming panel, mobile panel, PC panel, guild selection, free panel, gaming store" />
+  <meta name="theme-color" content="#d4af37" />
+  <meta property="og:title" content="ADAM CORPORATION — Premium Gaming Store" />
+  <meta property="og:description" content="Premium Gaming Panels & Guild Services" />
+  
+  <title>ADAM CORPORATION — Premium Gaming Panels & Guild Services</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" href="assets/images/logo.png" type="image/png" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+</head>
+
+<body>
+
+<!-- ─── NAVIGATION HEADER ────────────────────────────────────── -->
+<nav id="navbar">
+  <a class="nav-logo" onclick="AK.navigate('home')">
+    <img src="assets/images/logo.png" alt="ADAM CORP Logo" id="navLogo">
+    <span class="nav-logo-text">ADAM CORP</span>
+  </a>
+
+  <div class="nav-center" id="navCenter">
+    <span class="nav-link active" data-page="home" data-i18n="home" onclick="AK.navigate('home');AK.toggleMenu()">Home</span>
+    <span class="nav-link" data-page="mobile" onclick="AK.navigate('mobile');AK.toggleMenu()">
+      <span data-i18n="mobilePanel">Mobile Panel</span>
+    </span>
+    <span class="nav-link" data-page="pc" onclick="AK.navigate('pc');AK.toggleMenu()">
+      <span data-i18n="pcPanel">PC Panel</span>
+    </span>
+    <span class="nav-link" data-page="guild" onclick="AK.navigate('guild');AK.toggleMenu()">
+      <span data-i18n="guildSelection">Guild Selection</span>
+    </span>
+    <span class="nav-link" data-page="free" onclick="AK.navigate('free');AK.toggleMenu()">
+      <span data-i18n="freePanel">Free Panel</span>
+    </span>
+
+  </div>
+
+  <div class="nav-right">
+    <button class="nav-btn" onclick="AK.navigate('support')" id="supportNavBtn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+      </svg>
+      <span data-i18n="support">Support</span>
+    </button>
+    <button class="nav-btn" onclick="AK.navigate('settings')" id="settingsNavBtn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+      </svg>
+      <span data-i18n="settings">Settings</span>
+    </button>
+    <button class="hamburger" onclick="AK.toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ─── TOAST NOTIFICATIONS ──────────────────────────────────── -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- ─── PAGE: HOME ───────────────────────────────────────────── -->
+<div id="page-home" class="page active">
+  <section id="hero">
+    <canvas id="particleCanvas"></canvas>
+    <div class="scan-lines"></div>
+
+    <div class="hero-content">
+      <!-- Homepage Quick Language Picker -->
+      <div style="display:flex; justify-content:center; gap:8px; margin-bottom:1.5rem">
+        <button class="btn btn-ghost btn-sm home-lang-btn" data-homelang="en" onclick="AK.applyLang('en')" style="padding:6px 12px; font-size:0.75rem; border-radius:20px">🇬🇧 English</button>
+        <button class="btn btn-ghost btn-sm home-lang-btn" data-homelang="ta" onclick="AK.applyLang('ta')" style="padding:6px 12px; font-size:0.75rem; border-radius:20px">🇮🇳 Tamil</button>
+        <button class="btn btn-ghost btn-sm home-lang-btn" data-homelang="hi" onclick="AK.applyLang('hi')" style="padding:6px 12px; font-size:0.75rem; border-radius:20px">🇮🇳 Hindi</button>
+      </div>
+      <img src="assets/images/logo.png" alt="ADAM CORP Logo" class="hero-logo">
+      <h1 class="hero-title glitch-text" data-text="ADAM CORP">ADAM CORP</h1>
+      <p class="hero-tagline" data-i18n="heroTagline">Premium Gaming Panels & Guild Services</p>
+
+      <div class="hero-badges">
+        <div class="hero-badge">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          Premium Quality
+        </div>
+        <div class="hero-badge">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Secure & Safe
+        </div>
+        <div class="hero-badge">
+          <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          Instant Delivery
+        </div>
+        <div class="hero-badge">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          24/7 Support
+        </div>
+      </div>
+
+      <div class="hero-cta">
+        <button class="btn btn-primary btn-lg" onclick="AK.navigate('mobile')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          <span data-i18n="mobilePanel">Mobile Panel</span>
+        </button>
+        <button class="btn btn-outline btn-lg" onclick="AK.navigate('guild')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <span data-i18n="guildSelection">Guild Selection</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Bar -->
+  <div style="display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;padding:2rem;background:var(--bg-deep);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+    <div style="text-align:center">
+      <div style="font-family:'Orbitron',monospace;font-size:1.8rem;font-weight:900;color:var(--primary)">10K+</div>
+      <div style="font-size:0.72rem;font-family:'Rajdhani',sans-serif;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);margin-top:4px">Happy Customers</div>
+    </div>
+    <div style="text-align:center">
+      <div style="font-family:'Orbitron',monospace;font-size:1.8rem;font-weight:900;color:var(--primary)">99.9%</div>
+      <div style="font-size:0.72rem;font-family:'Rajdhani',sans-serif;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);margin-top:4px">Uptime Guaranteed</div>
+    </div>
+    <div style="text-align:center">
+      <div style="font-family:'Orbitron',monospace;font-size:1.8rem;font-weight:900;color:var(--primary)">80+</div>
+      <div style="font-size:0.72rem;font-family:'Rajdhani',sans-serif;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);margin-top:4px">Pro Panels</div>
+    </div>
+    <div style="text-align:center">
+      <div style="font-family:'Orbitron',monospace;font-size:1.8rem;font-weight:900;color:var(--primary)">100%</div>
+      <div style="font-size:0.72rem;font-family:'Rajdhani',sans-serif;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);margin-top:4px">Secure Transactions</div>
+    </div>
+  </div>
+
+  <!-- Services Grid -->
+  <section id="categories">
+    <div class="section-header">
+      <div class="section-badge">Our Services</div>
+      <h2 class="section-title">Choose Your <span>Panel</span></h2>
+      <p style="font-size:0.9rem;color:var(--text-muted);margin-top:0.5rem">Premium control configurations custom-crafted for champions</p>
+      <div class="section-line"><div class="section-line-dot"></div></div>
+    </div>
+
+    <div class="categories-grid">
+      <!-- Mobile Category Card -->
+      <div class="category-card" onclick="AK.navigate('mobile')">
+        <img class="category-card-banner" src="assets/images/mobile-banner.png" alt="Mobile Banner">
+        <div class="category-card-overlay"></div>
+        <div class="category-card-body">
+          <div class="category-card-icon">
+            <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke="var(--primary)" stroke-width="2"/></svg>
+          </div>
+          <div class="category-card-badge">Android & iOS Support</div>
+          <div class="category-card-title" data-i18n="mobilePanel">Mobile Panel</div>
+          <div class="category-card-desc">Advanced mobile gameplay helpers with Main ID stability. Highly optimized configurations.</div>
+          <button class="btn btn-primary category-card-enter">
+            <span data-i18n="enterPanel">Enter Panel</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- PC Category Card -->
+      <div class="category-card" onclick="AK.navigate('pc')">
+        <img class="category-card-banner" src="assets/images/pc-banner.png" alt="PC Banner">
+        <div class="category-card-overlay"></div>
+        <div class="category-card-body">
+          <div class="category-card-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <div class="category-card-badge">Windows Support</div>
+          <div class="category-card-title" data-i18n="pcPanel">PC Panel</div>
+          <div class="category-card-desc">Elite desktop gaming enhancers featuring ultra-low input lag and key configurations.</div>
+          <button class="btn btn-primary category-card-enter">
+            <span data-i18n="enterPanel">Enter Panel</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Guild Selection -->
+      <div class="category-card" onclick="AK.navigate('guild')">
+        <img class="category-card-banner" src="assets/images/logo.png" alt="Guild Banner" style="object-position:top">
+        <div class="category-card-overlay"></div>
+        <div class="category-card-body">
+          <div class="category-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div class="category-card-badge">Recruitment Open</div>
+          <div class="category-card-title" data-i18n="guildSelection">Guild Selection</div>
+          <div class="category-card-desc">Interview with our recruiter bot to apply to join our legendary ADAM CORP competitive gaming guild.</div>
+          <button class="btn btn-primary category-card-enter">
+            <span data-i18n="guildJoin">Apply to Join</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-logo-text">ADAM CORPORATION</div>
+    <div class="footer-tagline">Premium Gaming Panels & Guild Services</div>
+    <div class="footer-socials">
+      <a class="footer-social-btn" href="#" id="instaLink" target="_blank" title="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </a>
+      <a class="footer-social-btn" href="#" id="ytLink" target="_blank" title="YouTube">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor"/></svg>
+      </a>
+      <a class="footer-social-btn" href="#" id="discordLink" target="_blank" title="Discord">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057.1 18.08.111 18.102.13 18.116a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+      </a>
+    </div>
+    <div class="footer-copy">
+      &copy; 2026 ADAM CORPORATION. All rights reserved. &nbsp;|&nbsp; Premium Gaming Configs
+    </div>
+  </footer>
+</div>
+
+<!-- ─── PAGE: MOBILE PANEL ───────────────────────────────────── -->
+<div id="page-mobile" class="page">
+  <div class="panel-page">
+    <div class="back-btn" onclick="AK.navigate('home')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+      <span data-i18n="back">Back</span>
+    </div>
+
+    <div class="panel-hero">
+      <img class="panel-hero-img" id="mobilePanelBanner" src="assets/images/mobile-banner.png" alt="Mobile Banner">
+      <div class="panel-hero-overlay">
+        <div class="panel-hero-text">
+          <h1 id="mobilePanelTitle">Mobile Panel</h1>
+          <p id="mobilePanelDesc">Premium mobile gaming control panels</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" style="margin-bottom:1.5rem">
+      <div class="section-badge">Select Your Plan</div>
+      <h2 class="section-title">Mobile <span>Panel Options</span></h2>
+    </div>
+
+    <div class="panel-options-grid" id="mobileOptionsGrid"></div>
+    <div class="panel-detail" id="mobilePanelDetail"></div>
+  </div>
+</div>
+
+<!-- ─── PAGE: PC PANEL ───────────────────────────────────────── -->
+<div id="page-pc" class="page">
+  <div class="panel-page">
+    <div class="back-btn" onclick="AK.navigate('home')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+      <span data-i18n="back">Back</span>
+    </div>
+
+    <div class="panel-hero">
+      <img class="panel-hero-img" id="pcPanelBanner" src="assets/images/pc-banner.png" alt="PC Banner">
+      <div class="panel-hero-overlay">
+        <div class="panel-hero-text">
+          <h1 id="pcPanelTitle">PC Panel</h1>
+          <p id="pcPanelDesc">High-performance PC gaming control panels</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" style="margin-bottom:1.5rem">
+      <div class="section-badge">Choose Your Build</div>
+      <h2 class="section-title">PC <span>Panel Options</span></h2>
+    </div>
+
+    <div class="panel-options-grid" id="pcOptionsGrid"></div>
+    <div class="panel-detail" id="pcPanelDetail"></div>
+  </div>
+</div>
+
+<!-- ─── PAGE: GUILD SELECTION ────────────────────────────────── -->
+<div id="page-guild" class="page">
+  <div class="guild-page">
+    <div class="back-btn" onclick="AK.navigate('home')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+      <span data-i18n="back">Back</span>
+    </div>
+
+    <div class="section-header">
+      <div class="section-badge">Elite Guild</div>
+      <h1 class="section-title">Guild <span>Application</span></h1>
+      <p style="font-size:0.9rem;color:var(--text-muted);margin-top:0.5rem">Complete our AI interview process to apply for membership</p>
+      <div class="section-line"><div class="section-line-dot"></div></div>
+    </div>
+
+    <!-- AI Chatbot interface -->
+    <div class="guild-chat-container">
+      <div class="guild-chat-header">
+        <div class="guild-ai-avatar">AI</div>
+        <div>
+          <div class="guild-ai-name">ADAM CORP Recruitment AI</div>
+          <div class="guild-ai-status">Online & Ready</div>
+        </div>
+      </div>
+      
+      <div class="guild-chat-messages" id="guildMessages"></div>
+      
+      <div class="guild-chat-input-area">
+        <input type="text" class="guild-chat-input" id="guildInput" data-i18n-placeholder="typeMessage" placeholder="Type your answer here..." />
+        <button class="guild-send-btn" onclick="AK.guildSend()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Submit Trigger -->
+    <button class="btn btn-primary btn-lg" id="guildSubmitBtn" style="display:none; margin-top:1.5rem; width:100%; justify-content:center" onclick="AK.guildSubmit()">
+      <span data-i18n="joinGuild">Submit Application via WhatsApp</span>
+    </button>
+
+    <!-- Rules Board -->
+    <div class="guild-rules-box">
+      <h3>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span data-i18n="guildRules">Guild Rules</span>
+      </h3>
+      <div id="guildRulesList"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── PAGE: FREE PANEL ─────────────────────────────────────── -->
+<div id="page-free" class="page">
+  <div class="free-page">
+    <div class="back-btn" onclick="AK.navigate('home')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+      <span data-i18n="back">Back</span>
+    </div>
+
+    <div class="section-header">
+      <div class="section-badge">Free Access</div>
+      <h1 class="section-title" data-i18n="freePanelTitle">Free Panel Access</h1>
+      <p style="font-size:0.9rem;color:var(--text-muted);margin-top:0.5rem" data-i18n="freePanelSub">Complete all steps below to unlock free panel access</p>
+      <div class="section-line"><div class="section-line-dot"></div></div>
+    </div>
+
+    <!-- Steps Verification Container -->
+    <div class="verification-box" id="freeVerifyBox">
+      <div class="verification-title">Unlock Free Panel</div>
+      <div class="verification-subtitle">Follow our community socials to unlock credentials for free panels. Complete all 3 steps below.</div>
+
+      <div class="verification-steps">
+        <!-- Step 1: Insta -->
+        <div class="verification-step" id="step-instagram">
+          <div class="verification-step-icon step-instagram">
+            <svg viewBox="0 0 24 24" fill="white"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="white" stroke-width="2"/></svg>
+          </div>
+          <div class="verification-step-text">
+            <div class="verification-step-name">Follow on Instagram</div>
+            <div class="verification-step-desc">@adam_corporation</div>
+          </div>
+          <a class="verification-step-action" href="#" target="_blank" onclick="setTimeout(()=>AK.verifyStep('instagram'), 1500)">Follow</a>
+          <div class="verify-check-icon">✓</div>
+        </div>
+
+        <!-- Step 2: YT -->
+        <div class="verification-step" id="step-youtube">
+          <div class="verification-step-icon step-youtube">
+            <svg viewBox="0 0 24 24" fill="white"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="red"/></svg>
+          </div>
+          <div class="verification-step-text">
+            <div class="verification-step-name">Subscribe on YouTube</div>
+            <div class="verification-step-desc">Adam Corporation</div>
+          </div>
+          <a class="verification-step-action" href="#" target="_blank" onclick="setTimeout(()=>AK.verifyStep('youtube'), 1500)">Subscribe</a>
+          <div class="verify-check-icon">✓</div>
+        </div>
+
+        <!-- Step 3: Discord -->
+        <div class="verification-step" id="step-discord">
+          <div class="verification-step-icon step-discord">
+            <svg viewBox="0 0 24 24" fill="white"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057.1 18.08.111 18.102.13 18.116a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+          </div>
+          <div class="verification-step-text">
+            <div class="verification-step-name">Join Discord Server</div>
+            <div class="verification-step-desc">Official Discord Server</div>
+          </div>
+          <a class="verification-step-action" href="#" id="discordJoinBtn" target="_blank" onclick="setTimeout(()=>AK.verifyStep('discord'), 1500)">Join</a>
+          <div class="verify-check-icon">✓</div>
+        </div>
+      </div>
+
+      <button class="btn btn-primary btn-lg" style="width:100%" onclick="AK.showToast('Please complete all 3 steps first.')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+        <span data-i18n="verifyAndAccess">Verify & Access Free Panel</span>
+      </button>
+    </div>
+
+    <!-- Login Container (Shown after verification) -->
+    <div class="login-box" id="freePanelLogin">
+      <div class="login-title" data-i18n="loginTitle">Free Panel Login</div>
+      <p style="text-align:center; font-size:0.8rem; color:var(--primary); margin-bottom:1.5rem; font-family:'Rajdhani',sans-serif; text-transform:uppercase; letter-spacing:0.08em">(Username: adam | Password: corp)</p>
+      <div class="form-group">
+        <label class="form-label" data-i18n="username">Username</label>
+        <input type="text" class="form-input" id="freeUsername" placeholder="Enter username (try: adam)" />
+      </div>
+      <div class="form-group">
+        <label class="form-label" data-i18n="password">Password</label>
+        <input type="password" class="form-input" id="freePassword" placeholder="Enter password (try: corp)" />
+      </div>
+      <button class="btn btn-primary btn-lg" style="width:100%;margin-top:0.5rem" onclick="AK.freeLogin()" data-i18n="login">Login</button>
+    </div>
+  </div>
+</div>
+
+<!-- ─── PAGE: CUSTOMER SUPPORT ───────────────────────────────── -->
+<div id="page-support" class="page">
+  <div class="support-page">
+    <div class="back-btn" onclick="AK.navigate('home')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+      <span data-i18n="back">Back</span>
+    </div>
+
+    <div class="section-header">
+      <div class="section-badge">Live Support</div>
+      <h1 class="section-title" data-i18n="supportTitle">Customer Support</h1>
+      <p style="font-size:0.9rem;color:var(--text-muted);margin-top:0.5rem" data-i18n="supportSub">Chat with us — your message will be forwarded to our team</p>
+      <div class="section-line"><div class="section-line-dot"></div></div>
+    </div>
+
+    <!-- Quick Link Actions -->
+    <div style="display:flex;gap:12px;margin-bottom:1.5rem;flex-wrap:wrap">
+      <a class="btn btn-primary" href="#" id="discordSupportBtn" target="_blank" style="background: linear-gradient(135deg, #5865F2, #4752c4); color:#fff; box-shadow: 0 4px 20px rgba(88, 101, 242, 0.4)">
+        <svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057.1 18.08.111 18.102.13 18.116a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+        Discord Support
+      </a>
+    </div>
+
+    <!-- Live support chat simulation -->
+    <div class="support-chat-container">
+      <div class="guild-chat-header">
+        <div class="guild-ai-avatar">AD</div>
+        <div>
+          <div class="guild-ai-name">ADAM CORP Support Team</div>
+          <div class="guild-ai-status">Online</div>
+        </div>
+      </div>
+
+      <div class="support-chat-messages" id="supportMessages"></div>
+
+      <div class="guild-chat-input-area">
+        <input type="text" class="guild-chat-input" id="supportInput" data-i18n-placeholder="typeMessage" placeholder="Type your message here..." />
+        <button class="guild-send-btn" onclick="AK.supportSend()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── PAGE: SITE SETTINGS ──────────────────────────────────── -->
+<div id="page-settings" class="page">
+  <div class="settings-page">
+    <div class="back-btn" onclick="AK.navigate('home')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+      <span data-i18n="back">Back</span>
+    </div>
+
+    <div class="section-header">
+      <div class="section-badge">Customize</div>
+      <h1 class="section-title">Site <span>Settings</span></h1>
+      <div class="section-line"><div class="section-line-dot"></div></div>
+    </div>
+
+    <!-- Theme switch block -->
+    <div class="settings-card">
+      <div class="settings-section-title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <span data-i18n="theme">Theme</span>
+      </div>
+      <div class="theme-grid" id="themeGrid"></div>
+    </div>
+
+    <!-- Language switch block -->
+    <div class="settings-card">
+      <div class="settings-section-title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <span data-i18n="language">Language</span>
+      </div>
+      <div class="lang-grid" id="langGrid"></div>
+    </div>
+
+    <!-- About footer card -->
+    <div class="settings-card" style="text-align:center">
+      <div style="font-family:'Orbitron',monospace;font-size:1.5rem;font-weight:900;background:linear-gradient(135deg,var(--primary),var(--secondary));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:0.5rem">ADAM CORPORATION</div>
+      <div style="font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem">Premium Gaming Panels & Guild Services</div>
+      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+        <span style="font-size:0.72rem;padding:4px 12px;border-radius:20px;background:var(--primary-subtle);border:1px solid var(--border);color:var(--text-muted);font-family:Rajdhani,sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:0.08em">v2.0.0</span>
+        <span style="font-size:0.72rem;padding:4px 12px;border-radius:20px;background:var(--primary-subtle);border:1px solid var(--border);color:var(--text-muted);font-family:Rajdhani,sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:0.08em">Premium Gold Edition</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── PAGE: MANAGE PRODUCTS (ADMIN CRUD) ───────────────────── -->
+<div id="page-manage" class="page">
+  <div class="admin-container">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem">
+      <div class="back-btn" onclick="AK.navigate('home')" style="margin-bottom:0">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+        <span data-i18n="back">Back</span>
+      </div>
+      <button id="adminLogoutBtn" class="btn btn-ghost btn-sm" onclick="AK.adminLogout()" style="display:none">Logout</button>
+    </div>
+
+    <div class="section-header">
+      <div class="section-badge">Admin Dashboard</div>
+      <h1 class="section-title"><span data-i18n="manageProducts">Manage Products</span></h1>
+      <p style="font-size:0.9rem;color:var(--text-muted);margin-top:0.5rem" data-i18n="welcomeAdmin">Welcome to Adam Corp Admin Dashboard. Manage gaming panels dynamically below.</p>
+      <div class="section-line"><div class="section-line-dot"></div></div>
+    </div>
+
+    <!-- Admin Login Form -->
+    <div id="adminLoginBox" class="login-box" style="display:none; max-width:480px; margin:2rem auto">
+      <div class="login-title">Admin Panel Login</div>
+      <div class="form-group">
+        <label class="form-label">Admin Email</label>
+        <input type="text" class="form-input" id="adminEmail" placeholder="admin@ac.com" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">Password</label>
+        <input type="password" class="form-input" id="adminPassword" placeholder="Enter admin password" />
+      </div>
+      <button class="btn btn-primary btn-lg" style="width:100%; margin-top:0.5rem" onclick="AK.adminLogin()">Login</button>
+    </div>
+
+    <!-- Admin Dashboard Content -->
+    <div id="adminDashboardContent" style="display:none">
+      <!-- Admin Sub Tabs -->
+      <div class="admin-tabs">
+        <div class="admin-tab active" data-tab="list" onclick="AK.switchAdminTab('list')" data-i18n="productList">Product List</div>
+        <div class="admin-tab" data-tab="form" onclick="AK.switchAdminTab('form')" data-i18n="addNewProduct">Add New Product</div>
+      </div>
+
+    <!-- Section 1: List -->
+    <div class="admin-section active" data-section="list">
+      <div class="crud-table-wrap">
+        <table class="crud-table">
+          <thead>
+            <tr>
+              <th data-i18n="category">Category</th>
+              <th data-i18n="productName">Product Name</th>
+              <th data-i18n="price">Price</th>
+              <th data-i18n="priceNote">Price Period</th>
+              <th data-i18n="popularBadge">Popular</th>
+              <th data-i18n="actions">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="crudTableBody">
+            <!-- Rendered dynamically by CRUD JS -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Section 2: Form (Add/Edit) -->
+    <div class="admin-section" data-section="form">
+      <div class="crud-form">
+        <h2 id="crudFormTitle" style="font-family:'Orbitron',monospace; font-size:1.25rem; font-weight:800; color:var(--primary); margin-bottom:1.5rem" data-i18n="addNewProduct">Add New Product</h2>
+        
+        <div class="form-grid">
+          <!-- Category select -->
+          <div class="form-group">
+            <label class="form-label" data-i18n="category">Category</label>
+            <select id="prodCategory" class="form-input" style="background:var(--bg-deep)">
+              <option value="mobile">Mobile Panel</option>
+              <option value="pc">PC Panel</option>
+            </select>
+          </div>
+
+          <!-- Price -->
+          <div class="form-group">
+            <label class="form-label" data-i18n="price">Price</label>
+            <input type="text" id="prodPrice" class="form-input" placeholder="e.g. ₹1499" />
+          </div>
+
+          <!-- Price note -->
+          <div class="form-group">
+            <label class="form-label" data-i18n="priceNote">Price Period</label>
+            <input type="text" id="prodPriceNote" class="form-input" placeholder="e.g. per month" />
+          </div>
+
+          <!-- Featured checkbox -->
+          <div class="form-group" style="display:flex; align-items:center; gap:8px; margin-top:28px">
+            <input type="checkbox" id="prodPopular" style="width:18px; height:18px; cursor:pointer" />
+            <label for="prodPopular" class="form-label" style="margin-bottom:0; cursor:pointer" data-i18n="popularBadge">Popular / Featured</label>
+          </div>
+
+          <!-- Translation Fields (Languages Tabs) -->
+          <div class="form-grid-full" style="margin-top:1rem">
+            <label class="form-label">Product Translations (Enter details for each language)</label>
+            <div class="lang-tabs">
+              <div class="lang-tab active" data-formlang="en" onclick="AK.switchCRUDFormLang('en')">English</div>
+              <div class="lang-tab" data-formlang="ta" onclick="AK.switchCRUDFormLang('ta')">Tamil (தமிழ்)</div>
+              <div class="lang-tab" data-formlang="hi" onclick="AK.switchCRUDFormLang('hi')">Hindi (हिंदी)</div>
+            </div>
+
+            <!-- English Inputs -->
+            <div class="lang-input-group active" data-inputlang="en">
+              <div class="form-group">
+                <label class="form-label">Product Name (EN) *</label>
+                <input type="text" id="prodName_en" class="form-input" placeholder="e.g. Main ID Panel" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Description (EN) *</label>
+                <textarea id="prodDesc_en" class="form-input" rows="3" placeholder="Describe the panel features..."></textarea>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Features (EN) (Comma-separated)</label>
+                <input type="text" id="prodFeatures_en" class="form-input" placeholder="e.g. Anti-ban, 24/7 Support, Ultra safe" />
+              </div>
+            </div>
+
+            <!-- Tamil Inputs -->
+            <div class="lang-input-group" data-inputlang="ta">
+              <div class="form-group">
+                <label class="form-label">Product Name (TA)</label>
+                <input type="text" id="prodName_ta" class="form-input" placeholder="எ.கா. முதன்மை ஐடி பேனல்" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Description (TA)</label>
+                <textarea id="prodDesc_ta" class="form-input" rows="3" placeholder="தயாரிப்பு விவரம்..."></textarea>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Features (TA) (Comma-separated)</label>
+                <input type="text" id="prodFeatures_ta" class="form-input" placeholder="எ.கா. ஆன்டி-பேன், 24/7 ஆதரவு" />
+              </div>
+            </div>
+
+            <!-- Hindi Inputs -->
+            <div class="lang-input-group" data-inputlang="hi">
+              <div class="form-group">
+                <label class="form-label">Product Name (HI)</label>
+                <input type="text" id="prodName_hi" class="form-input" placeholder="उदा: मुख्य आईडी पैनल" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Description (HI)</label>
+                <textarea id="prodDesc_hi" class="form-input" rows="3" placeholder="उत्पाद का विवरण..."></textarea>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Features (HI) (Comma-separated)</label>
+                <input type="text" id="prodFeatures_hi" class="form-input" placeholder="उदा: एंटी-बैन, 24/7 सहायता" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Buttons -->
+          <div class="form-grid-full" style="display:flex; gap:10px; margin-top:1.5rem">
+            <button class="btn btn-primary" onclick="AK.submitProductForm()" data-i18n="saveProduct">Save Product</button>
+            <button class="btn btn-ghost" onclick="AK.resetCRUDForm(); AK.switchAdminTab('list')" data-i18n="cancel">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div> <!-- Close adminDashboardContent -->
+  </div>
+</div>
+
+<!-- Scripts -->
+<script src="js/data.js"></script>
+<script src="js/theme.js"></script>
+<script src="js/guild.js"></script>
+<script src="js/crud.js"></script>
+<script src="js/app.js"></script>
+
+<script>
+  // Sync the footer links with config
+  document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('instaLink').href = AK.config.instagram;
+    document.getElementById('ytLink').href = AK.config.youtube;
+    document.getElementById('discordLink').href = AK.config.discord;
+    document.getElementById('discordJoinBtn').href = AK.config.discord;
+
+    // Set support page links
+    const dsSupport = document.getElementById('discordSupportBtn');
+    if (dsSupport) dsSupport.href = AK.config.discord;
+  });
+</script>
+
+</body>
+</html>
