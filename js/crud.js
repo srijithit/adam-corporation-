@@ -40,7 +40,7 @@ AK.adminLogin = function() {
   const email = document.getElementById('adminEmail').value.trim();
   const password = document.getElementById('adminPassword').value.trim();
   
-  if (email === 'admin@ac.com' && password === 'accorp') {
+  if (email === 'admin@adamcorp' && password === 'accorp') {
     AK.isAdminAuthenticated = true;
     sessionStorage.setItem('adam_admin_auth', 'true');
     AK.showToast('🔓 Admin login successful!');
